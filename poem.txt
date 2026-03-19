@@ -1,2 +1,36 @@
-Error generating poem:
-{'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+**In Harmony with Mother Nature's Symphony**
+
+Aalborg, Arnhem, Tilburg, een trio in perfecte harmonie,
+Met temperaturen die op elkaar aansluiten, alsof in stroom.
+Twintig graden Celsius boven, een zuiderwind die zeilt,
+En een helder blauwe lucht, waarin zonnestralen schuren en gieren.
+
+Zij zweven voort met een constante ritme, als maanden op rij,
+Een herhaling van dag en nacht, in eindeloze tochten.
+Geen druppel regen, geen onweer, geen donkere schimmen,
+Alleen die zon die brandt, met al zijn warmte en zijn licht.
+
+Maar waar is het dan het mooist? Waar voelt de zon zich het warmst?
+Voor het antwoord kijk ik maar naar de temperatuur,
+Tilburg schittert het hardst, met vijftien graad en een lichte bries,
+Er is geen plaats zoals Tilburg, waar het zon zoveel licht geeft.
+
+**In Harmonie met Moeders Natuursymfonie**
+
+Aalborg, Arnhem, Tilburg, een drietal in perfecte harmonie,
+Met temperaturen die op elkaar aansluiten, alsof in stroom.
+Twintig graden Celsius boven, een zuiderwind die zeilt,
+En een helder blauwe lucht, waarin zonnestralen schuren en gieren.
+
+Zij zweven voort met een constante ritme, als maanden op rij,
+Een herhaling van dag en nacht, in eendeloze tochten.
+Geen druppel regen, geen onweer, geen donkere schimmen,
+Alleen die zon die brandt, met al zijn warmte en zijn licht.
+
+Maar waar is het dan het mooist? Waar voelt de zon zich het warmst?
+Voor het antwoord kijk ik maar naar de temperatuur,
+Tilburg stralend het hardst, met vijftien graad en een lichte bries,
+Er is geen plaats zoals Tilburg, waar de zon zoveel licht geeft.
+
+Translation note: 
+The poem was written in a poetic style, so some parts were kept to the original language in order to keep the poetic feeling intact. For the rest of the translation, the translation was done as accurately as possible.
