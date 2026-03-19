@@ -2,8 +2,11 @@ name: Weather Pipeline
 
 on:
   schedule:
-    - cron: "0 18 * * *"   # Runs at 20:00 Denmark (UTC+2)
-  workflow_dispatch:       # allows manual run
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run-pipeline:
