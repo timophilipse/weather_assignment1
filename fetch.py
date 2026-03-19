@@ -1,10 +1,6 @@
 import requests
 import sqlite3
-from datetime import datetime, timedelta
 import os
-
-
-# LOCATIONS 
 
 locations = {
     "Aalborg": (57.048, 9.919),
@@ -13,9 +9,6 @@ locations = {
 }
 
 DB_FILE = "db.sqlite3"
-
-
-# FETCH WEATHER DATA
 
 def fetch_weather(lat, lon):
     url = (
@@ -36,9 +29,6 @@ def fetch_weather(lat, lon):
         "daylight": data["daily"]["daylight_duration"][1]
     }
 
-
-# DATABASE SETUP
-
 def init_db():
     conn = sqlite3.connect(DB_FILE)
     cur = conn.cursor()
@@ -56,9 +46,6 @@ def init_db():
 
     conn.commit()
     conn.close()
-
-
-# STORE DATA
 
 def store_data(location, weather):
     conn = sqlite3.connect(DB_FILE)
@@ -78,16 +65,10 @@ def store_data(location, weather):
     conn.commit()
     conn.close()
 
-
-# COLLECT ALL LOCATIONS
-
 def collect_weather():
     for name, (lat, lon) in locations.items():
         weather = fetch_weather(lat, lon)
         store_data(name, weather)
-
-
-# GENERATE POEM (GROQ)
 
 def generate_poem():
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
@@ -95,7 +76,6 @@ def generate_poem():
     conn = sqlite3.connect(DB_FILE)
     cur = conn.cursor()
 
-    
     cur.execute("""
         SELECT location, temperature, precipitation, wind_speed, daylight
         FROM weather
@@ -104,23 +84,20 @@ def generate_poem():
     rows = cur.fetchall()
     conn.close()
 
-    # Format weather nicely
     weather_text = "\n".join([
         f"{r[0]}: {r[1]}°C, {r[2]}mm rain, {r[3]} km/h wind, {r[4]/3600:.1f}h daylight"
         for r in rows
     ])
 
     prompt = f"""
-Write a short creative poem comparing the weather in these locations:
+Write a short poetic comparison of the weather:
 
 {weather_text}
 
 Requirements:
 - Compare all locations
-- Describe differences
-- Say where it is nicest to be tomorrow
-- Write in TWO languages: English and Dutch
-- Keep it short and poetic
+- Say where it is nicest tomorrow
+- Write in English and Dutch
 """
 
     url = "https://api.groq.com/openai/v1/chat/completions"
@@ -131,20 +108,27 @@ Requirements:
     }
 
     body = {
-        "model": "llama3-70b-8192",
+        "model": "llama3-8b-8192",
         "messages": [
             {"role": "user", "content": prompt}
         ]
     }
 
     response = requests.post(url, headers=headers, json=body)
-    poem = response.json()["choices"][0]["message"]["content"]
+
+    print("STATUS:", response.status_code)
+    print("RESPONSE:", response.text)
+
+    data = response.json()
+
+    if "choices" in data:
+        poem = data["choices"][0]["message"]["content"]
+    else:
+        poem = "Error generating poem:\n" + str(data)
 
     with open("poem.txt", "w", encoding="utf-8") as f:
         f.write(poem)
 
-
-# MAIN PIPELINE
 def main():
     init_db()
     collect_weather()
