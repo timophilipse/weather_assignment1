@@ -90,14 +90,17 @@ def generate_poem():
     ])
 
     prompt = f"""
-Write a short poetic comparison of the weather:
+Write a short poetic comparison of the weather for the following locations:
 
 {weather_text}
 
 Requirements:
+- First write a creative poem in **English**
+- Then write the same poem in **Dutch**
 - Compare all locations
 - Say where it is nicest tomorrow
-- Write in English and Dutch
+- Keep it short and poetic
+- Clearly separate the two languages with headings: 'English:' and 'Dutch:'
 """
 
     url = "https://api.groq.com/openai/v1/chat/completions"
