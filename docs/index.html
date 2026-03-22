@@ -33,7 +33,7 @@ pre{
 <pre id="poem">Loading poem...</pre>
 
 <script>
-fetch("../poem.txt")
+fetch("/weather_assignment1/poem.txt")
 .then(response => response.text())
 .then(data => {
     document.getElementById("poem").textContent = data;
