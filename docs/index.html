@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather Poem</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    max-width:800px;
+    margin:auto;
+    padding:40px;
+    background:#f4f4f4;
+}
+
+h1{
+    text-align:center;
+}
+
+pre{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    white-space:pre-wrap;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Tomorrow's Weather Poem</h1>
+
+<pre id="poem">Loading poem...</pre>
+
+<script>
+fetch("../poem.txt")
+.then(response => response.text())
+.then(data => {
+    document.getElementById("poem").textContent = data;
+});
+</script>
+
+</body>
+</html>
