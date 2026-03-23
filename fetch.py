@@ -129,7 +129,7 @@ Requirements:
     else:
         poem = "Error generating poem:\n" + str(data)
 
-    with open("docs/poem.txt", "w", encoding="utf-8") as f:
+    with open("poem.txt", "w", encoding="utf-8") as f:
         f.write(poem)
 
 def main():
